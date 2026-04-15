@@ -1,0 +1,20 @@
+﻿SUCCESS: {
+  "data": [
+    {
+      "CREATORID": "27219000000011006",
+      "description": null,
+      "type": null,
+      "userId": null,
+      "dues": null,
+      "MODIFIEDTIME": "2026-03-11 11:14:07:152",
+      "joinDate": null,
+      "phone": "+91 88888 88888",
+      "name": "Prawin Test",
+      "CREATEDTIME": "2026-03-11 11:14:07:152",
+      "ROWID": "27219000000035688",
+      "email": "prawin@test.com",
+      "apartment": "B-201",
+      "status": null
+    }
+  ]
+}

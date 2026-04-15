@@ -1,0 +1,454 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables — Dark (default - Interi Theme) ─────────────── */
+:root,
+[data-theme="dark"] {
+  --bg-base: #1a1a1a;
+  --bg-surface: #262626;
+  --bg-elevated: #333333;
+  --bg-hover: #404040;
+  --border-glass: #333333;
+  --border-bright: #4d4d4d;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #999999;
+  --accent-1: #c5a075; /* Golden Brown */
+  --accent-2: #dfbc93; /* Lighter Golden Brown */
+  --scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --scrollbar-thumb-hover: #c5a075;
+}
+
+/* ─── CSS Variables — Light ── */
+[data-theme="light"] {
+  --bg-base: #f9f9f9;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-hover: #f0f0f0;
+  --border-glass: #e5e5e5;
+  --border-bright: #c5a075;
+  --text-primary: #1a1a1a;
+  --text-secondary: #404040;
+  --text-muted: #737373;
+  --accent-1: #c5a075;
+  --accent-2: #dfbc93;
+  --scrollbar-thumb: rgba(0, 0, 0, 0.15);
+  --scrollbar-thumb-hover: #c5a075;
+}
+
+/* ─── Base ───────────────────────────────────────── */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    transition: background-color 0.4s ease, color 0.3s ease;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 0px; /* Blocky scrollbar for modern feel */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
+}
+
+/* ─── Solid Card (formerly Glass Card) ─────────────────────────────────── */
+@layer components {
+  .glass {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-glass);
+    border-radius: 0px; /* Interi is sharp and blocky */
+  }
+
+  .glass-elevated {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-bright);
+    border-radius: 0px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .card {
+    @apply glass p-6;
+    box-shadow: none;
+  }
+
+  /* Override stat cards to be cohesive with golden theme instead of rainbow */
+  .stat-card-indigo,
+  .stat-card-emerald,
+  .stat-card-amber,
+  .stat-card-rose,
+  .stat-card-violet,
+  .stat-card-teal,
+  .stat-card-cyan,
+  .stat-card-orange {
+    background: var(--bg-surface);
+    border-top: 3px solid var(--accent-1);
+  }
+
+  /* ── Nav links ── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-3 text-sm font-medium transition-all duration-200 cursor-pointer;
+    color: var(--text-secondary);
+    border-radius: 0;
+  }
+
+  .sidebar-link-active {
+    background: var(--accent-1) !important;
+    color: #1a1a1a !important; /* Dark text on gold background */
+    border: none !important;
+  }
+  
+  .sidebar-link-active svg {
+    color: #1a1a1a !important;
+  }
+
+  .sidebar-link-inactive:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-left: 3px solid var(--accent-1);
+  }
+
+  /* ── Bottom Nav Tab ── */
+  .bottom-nav-tab {
+    @apply flex flex-col items-center gap-1 px-3 py-2 transition-all duration-200 text-xs font-medium flex-1;
+    color: var(--text-muted);
+    border-radius: 0;
+  }
+
+  .bottom-nav-tab.active {
+    color: var(--accent-1);
+    border-top: 2px solid var(--accent-1);
+  }
+
+  /* ── Badge ── */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-semibold;
+    border-radius: 0;
+  }
+
+  .badge-glass {
+    background: var(--accent-1);
+    color: #1a1a1a;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300;
+    background: var(--accent-1);
+    color: #1a1a1a;
+    border-radius: 0;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-2);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300;
+    background: transparent;
+    border: 2px solid var(--accent-1);
+    color: var(--accent-1);
+    border-radius: 0;
+  }
+
+  .btn-secondary:hover {
+    background: var(--accent-1);
+    color: #1a1a1a;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-wider transition-all duration-300;
+    background: #e63946;
+    color: white;
+    border-radius: 0;
+  }
+
+  /* ── Input ── */
+  .input {
+    @apply w-full px-4 py-3 text-sm transition-all duration-200 outline-none;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    border-radius: 0;
+  }
+
+  /* Hotfix: Force inputs inside white background modals */
+  .modal-theme .input,
+  [data-theme="dark"] .modal-theme .input {
+    background: #f9f9f9 !important;
+    border: 1px solid #e5e5e5 !important;
+    color: #1a1a1a !important;
+  }
+
+  .modal-theme .input::placeholder,
+  [data-theme="dark"] .modal-theme .input::placeholder {
+    color: #999999 !important;
+  }
+
+  .modal-theme .label,
+  [data-theme="dark"] .modal-theme .label {
+    color: #404040 !important;
+  }
+
+  .input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .input:focus {
+    border-color: var(--accent-1);
+  }
+
+  .label {
+    @apply block text-sm font-semibold tracking-wide uppercase mb-1.5;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+  }
+
+  /* ── Page titles ── */
+  .page-title {
+    @apply text-3xl font-black tracking-tight;
+    color: var(--text-primary);
+  }
+
+  .section-title {
+    @apply text-sm font-bold mb-4 uppercase tracking-widest;
+    color: var(--accent-1);
+  }
+
+  /* ── Divider ── */
+  .glass-divider {
+    border-color: var(--border-glass);
+  }
+
+  /* ── Table rows ── */
+  table {
+    @apply w-full text-left border-collapse;
+  }
+  
+  .glass-row:hover {
+    background: var(--bg-hover);
+  }
+
+  /* ── Gradient text -> Solid Gold Text ── */
+  .gradient-text {
+    color: var(--accent-1);
+  }
+
+  /* ── Glow dot -> Solid dot ── */
+  .glow-dot {
+    @apply w-2 h-2;
+    background-color: currentColor;
+    border-radius: 0;
+  }
+}
+
+/* ─── Utilities ──────────────────────────────────── */
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Safe area for bottom nav on mobile */
+  .pb-safe {
+    padding-bottom: max(1.25rem, env(safe-area-inset-bottom));
+  }
+
+  .pb-nav {
+    padding-bottom: 5.5rem;
+  }
+
+  /* Glass table cell -> Solid */
+  .td-glass {
+    @apply px-4 py-4 text-sm font-medium;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-glass);
+  }
+
+  .th-glass {
+    @apply px-4 py-4 text-left text-xs font-black uppercase tracking-widest;
+    color: var(--accent-1);
+    border-bottom: 2px solid var(--border-glass);
+  }
+  
+  th {
+    @apply px-4 py-4 text-left text-xs font-black uppercase tracking-widest;
+    color: var(--accent-1);
+    background: var(--bg-elevated);
+    border-bottom: 2px solid var(--border-glass);
+  }
+  
+  td {
+     @apply px-4 py-4 text-sm font-medium border-b;
+     border-color: var(--border-glass);
+  }
+}
+
+/* ─── Transitions ────────────────────────────────── */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-enter-from {
+  transform: translateX(-100%);
+}
+
+.slide-leave-to {
+  transform: translateX(-100%);
+}
+
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide-right-enter-from {
+  transform: translateX(100%);
+}
+
+.slide-right-leave-to {
+  transform: translateX(100%);
+}
+
+/* ─── Light Mode Structural Overrides ─────────────── */
+[data-theme="light"] header {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+}
+
+[data-theme="light"] header button {
+  color: #404040 !important;
+}
+
+[data-theme="light"] header button:hover {
+  background: #f0f0f0 !important;
+  color: #1a1a1a !important;
+}
+
+/* Sidebar */
+[data-theme="light"] aside {
+  background: #ffffff !important;
+  border-right: 1px solid #e5e5e5 !important;
+}
+
+[data-theme="light"] .sidebar-link {
+  color: #404040;
+}
+
+[data-theme="light"] .sidebar-link-active {
+  background: var(--accent-1) !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .sidebar-link-active svg {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .sidebar-link-inactive:hover {
+  background: #f9f9f9;
+  color: #1a1a1a;
+  border-left-color: var(--accent-1);
+}
+
+/* Bottom nav */
+[data-theme="light"] nav.fixed.bottom-0 {
+  background: #ffffff !important;
+  border-top: 1px solid #e5e5e5 !important;
+}
+
+/* Cards in light mode */
+[data-theme="light"] .glass,
+[data-theme="light"] .card {
+  background: #ffffff !important;
+  border: 1px solid #e5e5e5 !important;
+}
+
+[data-theme="light"] .glass-elevated {
+  background: #ffffff !important;
+  border: 1px solid #c5a075 !important;
+}
+
+/* Inputs */
+[data-theme="light"] .input {
+  background: #f9f9f9 !important;
+  border-color: #e5e5e5 !important;
+  color: #1a1a1a !important;
+}
+
+/* Body background */
+[data-theme="light"] body {
+  background-color: #f9f9f9 !important;
+}
+
+/* Text overrides */
+[data-theme="light"] .page-title,
+[data-theme="light"] .section-title {
+  color: #1a1a1a !important;
+}
+
+[data-theme="light"] .section-title {
+  color: var(--accent-1) !important;
+}
+
+[data-theme="light"] .glass p,
+[data-theme="light"] .glass h3,
+[data-theme="light"] .glass h2,
+[data-theme="light"] .glass span:not(.badge):not([class*="text-"]) {
+  color: inherit;
+}

@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "CREATORID": "27219000000011006",
+      "description": null,
+      "type": null,
+      "userId": null,
+      "dues": null,
+      "MODIFIEDTIME": "2026-03-11 21:30:34:947",
+      "joinDate": null,
+      "phone": "1234567890",
+      "name": "Test Resident",
+      "CREATEDTIME": "2026-03-11 21:30:34:947",
+      "ROWID": "27219000000029441",
+      "email": "test@resident.com",
+      "apartment": "A-101",
+      "status": "active"
+    },
+    {
+      "CREATORID": "27219000000011006",
+      "description": null,
+      "type": null,
+      "userId": null,
+      "dues": null,
+      "MODIFIEDTIME": "2026-03-11 11:14:07:152",
+      "joinDate": null,
+      "phone": "+91 88888 88888",
+      "name": "Prawin Test",
+      "CREATEDTIME": "2026-03-11 11:14:07:152",
+      "ROWID": "27219000000035688",
+      "email": "prawin@test.com",
+      "apartment": "B-201",
+      "status": null
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "realtime-hub",
+    "version": "1.0.0",
+    "description": "CommunityHub Pro Advanced I/O Realtime Hub — WebSocket function",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "zcatalyst-sdk-node": "*"
+    }
+}

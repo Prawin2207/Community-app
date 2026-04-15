@@ -1,0 +1,296 @@
+/**
+ * api.js — Centralized Axios instance for all CommunityHub Pro API calls.
+ *
+ * Auto-injects on every request:
+ *   Authorization: Bearer <token>
+ *   X-Community-ID: <communityId>
+ *
+ * Auto-handles 401 by clearing session and redirecting to login.
+ */
+import axios from 'axios'
+
+// ── Base URL ──────────────────────────────────────────────────────────────────
+let BASE_URL = (process.env.VUE_APP_API_BASE && process.env.VUE_APP_API_BASE.trim() !== '')
+    ? process.env.VUE_APP_API_BASE.trim()
+    : '/server/communityAPI'
+
+if (BASE_URL.endsWith('/')) BASE_URL = BASE_URL.slice(0, -1)
+
+const api = axios.create({
+    baseURL: BASE_URL,
+    timeout: 20000,
+    headers: { 'Content-Type': 'application/json' },
+})
+
+// ── Request Interceptor — inject auth + community headers ─────────────────────
+api.interceptors.request.use((config) => {
+    const token       = localStorage.getItem('ch_token')
+    const communityId = JSON.parse(localStorage.getItem('ch_user') || '{}')?.communityId
+
+    if (token)       config.headers['Authorization']  = `Bearer ${token}`
+    if (communityId) config.headers['X-Community-ID'] = communityId
+
+    return config
+}, (error) => Promise.reject(error))
+
+// ── Response Interceptor — handle 401 globally ────────────────────────────────
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 401) {
+            // Clear stale session and send to login
+            localStorage.removeItem('ch_token')
+            localStorage.removeItem('ch_user')
+            window.location.href = '/#/login'
+        }
+        return Promise.reject(error)
+    }
+)
+
+// ── Auth ──────────────────────────────────────────────────────────────────────
+export const authAPI = {
+    login:  (body) => api.post('/auth/login', body),
+    signup: (body) => api.post('/auth/signup', body),
+    logout: ()     => api.post('/auth/logout'),
+    me:     ()     => api.get('/auth/me'),
+}
+
+// ── Communities (Super Admin) ─────────────────────────────────────────────────
+export const communitiesAPI = {
+    list:   ()         => api.get('/communities'),
+    get:    (id)       => api.get(`/communities/${id}`),
+    create: (body)     => api.post('/communities', body),
+    update: (id, body) => api.patch(`/communities/${id}`, body),
+    remove: (id)       => api.delete(`/communities/${id}`),
+}
+
+// ── Users ─────────────────────────────────────────────────────────────────────
+export const usersAPI = {
+    list:   (params)   => api.get('/users', { params }),
+    get:    (id)       => api.get(`/users/${id}`),
+    create: (body)     => api.post('/users', body),
+    update: (id, body) => api.patch(`/users/${id}`, body),
+    remove: (id)       => api.delete(`/users/${id}`),
+}
+
+// ── Flats ─────────────────────────────────────────────────────────────────────
+export const flatsAPI = {
+    list:   (params)   => api.get('/flats', { params }),
+    get:    (id)       => api.get(`/flats/${id}`),
+    create: (body)     => api.post('/flats', body),
+    update: (id, body) => api.patch(`/flats/${id}`, body),
+    remove: (id)       => api.delete(`/flats/${id}`),
+}
+
+// ── Flat Owners ───────────────────────────────────────────────────────────────
+export const flatOwnersAPI = {
+    list:   (params)   => api.get('/flat-owners', { params }),
+    get:    (id)       => api.get(`/flat-owners/${id}`),
+    create: (body)     => api.post('/flat-owners', body),
+    update: (id, body) => api.patch(`/flat-owners/${id}`, body),
+    remove: (id)       => api.delete(`/flat-owners/${id}`),
+}
+
+// ── Tenancies ─────────────────────────────────────────────────────────────────
+export const tenantsAPI = {
+    list:   (params)   => api.get('/tenants', { params }),
+    get:    (id)       => api.get(`/tenants/${id}`),
+    create: (body)     => api.post('/tenants', body),
+    update: (id, body) => api.patch(`/tenants/${id}`, body),
+}
+
+// ── Notices ───────────────────────────────────────────────────────────────────
+export const noticesAPI = {
+    list:   (params)   => api.get('/notices', { params }),
+    get:    (id)       => api.get(`/notices/${id}`),
+    create: (body)     => api.post('/notices', body),
+    update: (id, body) => api.patch(`/notices/${id}`, body),
+    remove: (id)       => api.delete(`/notices/${id}`),
+}
+
+// ── Complaints ────────────────────────────────────────────────────────────────
+export const complaintsAPI = {
+    list:   (params)   => api.get('/complaints', { params }),
+    get:    (id)       => api.get(`/complaints/${id}`),
+    create: (body)     => api.post('/complaints', body),
+    update: (id, body) => api.patch(`/complaints/${id}`, body),
+    remove: (id)       => api.delete(`/complaints/${id}`),
+}
+
+// ── Invoices ──────────────────────────────────────────────────────────────────
+export const invoicesAPI = {
+    list:   (params)   => api.get('/invoices', { params }),
+    get:    (id)       => api.get(`/invoices/${id}`),
+    create: (body)     => api.post('/invoices', body),
+    update: (id, body) => api.patch(`/invoices/${id}`, body),
+}
+
+// ── Visitors ──────────────────────────────────────────────────────────────────
+export const visitorsAPI = {
+    list:     (params) => api.get('/visitors', { params }),
+    get:      (id)     => api.get(`/visitors/${id}`),
+    create:   (body)   => api.post('/visitors', body),
+    update:   (id, b)  => api.patch(`/visitors/${id}`, b),
+    approve:  (id)     => api.patch(`/visitors/${id}/approve`, {}),
+    checkout: (id)     => api.patch(`/visitors/${id}/checkout`, {}),
+}
+
+// ── Gate Passes ───────────────────────────────────────────────────────────────
+export const gatePassesAPI = {
+    list:   (params)   => api.get('/gate-passes', { params }),
+    create: (body)     => api.post('/gate-passes', body),
+    update: (id, body) => api.patch(`/gate-passes/${id}`, body),
+}
+
+// ── Deliveries ────────────────────────────────────────────────────────────────
+export const deliveriesAPI = {
+    list:   (params)   => api.get('/deliveries', { params }),
+    create: (body)     => api.post('/deliveries', body),
+    update: (id, body) => api.patch(`/deliveries/${id}`, body),
+}
+
+// ── Facilities & Bookings ─────────────────────────────────────────────────────
+export const facilitiesAPI = {
+    list:   ()         => api.get('/facilities'),
+    create: (body)     => api.post('/facilities', body),
+    update: (id, body) => api.patch(`/facilities/${id}`, body),
+}
+
+export const bookingsAPI = {
+    list:   (params)   => api.get('/bookings', { params }),
+    create: (body)     => api.post('/bookings', body),
+    update: (id, body) => api.patch(`/bookings/${id}`, body),
+}
+
+// ── Staff, Tasks, Payroll ─────────────────────────────────────────────────────
+export const staffAPI = {
+    list:   (params)   => api.get('/staff', { params }),
+    create: (body)     => api.post('/staff', body),
+    update: (id, body) => api.patch(`/staff/${id}`, body),
+    remove: (id)       => api.delete(`/staff/${id}`),
+}
+
+export const tasksAPI = {
+    list:   (params)   => api.get('/tasks', { params }),
+    create: (body)     => api.post('/tasks', body),
+    update: (id, body) => api.patch(`/tasks/${id}`, body),
+}
+
+export const payrollAPI = {
+    list:   ()         => api.get('/payments'),
+    create: (body)     => api.post('/payments', body),
+    update: (id, body) => api.patch(`/payments/${id}`, body),
+}
+
+// ── Domestic Help ─────────────────────────────────────────────────────────────
+export const domesticHelpAPI = {
+    list:   (params)   => api.get('/domestic-help', { params }),
+    create: (body)     => api.post('/domestic-help', body),
+    update: (id, body) => api.patch(`/domestic-help/${id}`, body),
+    remove: (id)       => api.delete(`/domestic-help/${id}`),
+}
+
+// ── Alerts ────────────────────────────────────────────────────────────────────
+export const alertsAPI = {
+    list:    (params) => api.get('/alerts', { params }),
+    create:  (body)   => api.post('/alerts', body),
+    update:  (id, b)  => api.patch(`/alerts/${id}`, b),
+    resolve: (id, b)  => api.patch(`/alerts/${id}/resolve`, b || {}),
+}
+
+// ── Feed, Proposals, Minutes, Rules ──────────────────────────────────────────
+export const feedAPI = {
+    list:   ()         => api.get('/feed'),
+    create: (body)     => api.post('/feed', body),
+    update: (id, body) => api.patch(`/feed/${id}`, body),
+}
+
+export const proposalsAPI = {
+    list:   ()         => api.get('/proposals'),
+    create: (body)     => api.post('/proposals', body),
+    update: (id, body) => api.patch(`/proposals/${id}`, body),
+}
+
+export const minutesAPI = {
+    list:   ()   => api.get('/minutes'),
+    create: (b)  => api.post('/minutes', b),
+    remove: (id) => api.delete(`/minutes/${id}`),
+}
+
+export const rulesAPI = {
+    list:   ()         => api.get('/rules'),
+    create: (body)     => api.post('/rules', body),
+    update: (id, body) => api.patch(`/rules/${id}`, body),
+    remove: (id)       => api.delete(`/rules/${id}`),
+}
+
+// ── Inventory & Assets ────────────────────────────────────────────────────────
+export const inventoryAPI = {
+    list:   ()         => api.get('/inventory'),
+    create: (body)     => api.post('/inventory', body),
+    update: (id, body) => api.patch(`/inventory/${id}`, body),
+}
+
+export const assetsAPI = {
+    list:   (params)   => api.get('/assets', { params }),
+    create: (body)     => api.post('/assets', body),
+    update: (id, body) => api.patch(`/assets/${id}`, body),
+    remove: (id)       => api.delete(`/assets/${id}`),
+}
+
+// ── Maintenance ───────────────────────────────────────────────────────────────
+export const maintenanceAPI = {
+    list:   ()         => api.get('/maintenance'),
+    create: (body)     => api.post('/maintenance', body),
+    update: (id, body) => api.patch(`/maintenance/${id}`, body),
+}
+
+export const maintenanceNotifAPI = {
+    list:   (params) => api.get('/maintenance-notifications', { params }),
+    send:   (body)   => api.post('/maintenance-notifications', body),
+    sendRentReminder: (body) => api.post('/maintenance-notifications/rent-remind', body),
+}
+
+// ── Notifications (Persistent) ────────────────────────────────────────────────
+export const notificationsAPI = {
+    list:        (params) => api.get('/notifications', { params }),
+    unreadCount: ()       => api.get('/notifications/unread-count'),
+    markRead:    (id)     => api.patch(`/notifications/${id}/read`, {}),
+    markAllRead: ()       => api.patch('/notifications/mark-all-read', {}),
+    create:      (body)   => api.post('/notifications', body),
+    remove:      (id)     => api.delete(`/notifications/${id}`),
+}
+
+// ── Flat History ──────────────────────────────────────────────────────────────
+export const flatHistoryAPI = {
+    list:   (params) => api.get('/flat-history', { params }),
+    create: (body)   => api.post('/flat-history', body),
+}
+
+// ── Admin Dashboard ───────────────────────────────────────────────────────────
+export const adminDashboardAPI = {
+    get: () => api.get('/admin-dashboard'),
+}
+
+// ── Settings ──────────────────────────────────────────────────────────────────
+export const settingsAPI = {
+    list:   ()         => api.get('/settings'),
+    update: (key, val) => api.patch('/settings', { key, value: val }),
+}
+
+// ── Residents & Owners (legacy — keep for backward compat) ───────────────────
+export const residentsAPI = {
+    list:   (params)   => api.get('/residents', { params }),
+    create: (body)     => api.post('/residents', body),
+    update: (id, body) => api.patch(`/residents/${id}`, body),
+    remove: (id)       => api.delete(`/residents/${id}`),
+}
+
+export const ownersAPI = {
+    list:   (params)   => api.get('/owners', { params }),
+    create: (body)     => api.post('/owners', body),
+    update: (id, body) => api.patch(`/owners/${id}`, body),
+    remove: (id)       => api.delete(`/owners/${id}`),
+}
+
+export default api

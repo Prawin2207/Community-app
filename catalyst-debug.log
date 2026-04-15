@@ -1,0 +1,108 @@
+[debug] [2026-04-15T14:36:16.782Z] : 
+[debug] [2026-04-15T14:36:16.784Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:36:16.786Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve
+[debug] [2026-04-15T14:36:16.787Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T14:36:16.788Z] : Platform:     win32
+[debug] [2026-04-15T14:36:16.789Z] : Node Version: v16.20.2
+[debug] [2026-04-15T14:36:16.794Z] : Time:         Wed Apr 15 2026 20:06:16 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T14:36:16.794Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:36:16.794Z] : 
+[debug] [2026-04-15T14:42:12.640Z] : 
+[debug] [2026-04-15T14:42:12.641Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:42:12.642Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:shell
+[debug] [2026-04-15T14:42:12.642Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T14:42:12.643Z] : Platform:     win32
+[debug] [2026-04-15T14:42:12.643Z] : Node Version: v16.20.2
+[debug] [2026-04-15T14:42:12.646Z] : Time:         Wed Apr 15 2026 20:12:12 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T14:42:12.646Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:42:12.647Z] : 
+[debug] [2026-04-15T14:44:48.237Z] : 
+[debug] [2026-04-15T14:44:48.239Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:44:48.239Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve
+[debug] [2026-04-15T14:44:48.240Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T14:44:48.240Z] : Platform:     win32
+[debug] [2026-04-15T14:44:48.240Z] : Node Version: v16.20.2
+[debug] [2026-04-15T14:44:48.243Z] : Time:         Wed Apr 15 2026 20:14:48 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T14:44:48.244Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:44:48.244Z] : 
+[debug] [2026-04-15T14:51:01.360Z] : 
+[debug] [2026-04-15T14:51:01.361Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:51:01.362Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js serve
+[debug] [2026-04-15T14:51:01.362Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T14:51:01.362Z] : Platform:     win32
+[debug] [2026-04-15T14:51:01.363Z] : Node Version: v16.20.2
+[debug] [2026-04-15T14:51:01.365Z] : Time:         Wed Apr 15 2026 20:21:01 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T14:51:01.365Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T14:51:01.365Z] : 
+[debug] [2026-04-15T15:00:25.088Z] : 
+[debug] [2026-04-15T15:00:25.089Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T15:00:25.089Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Users --limit 10
+[debug] [2026-04-15T15:00:25.090Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T15:00:25.090Z] : Platform:     win32
+[debug] [2026-04-15T15:00:25.090Z] : Node Version: v16.20.2
+[debug] [2026-04-15T15:00:25.093Z] : Time:         Wed Apr 15 2026 20:30:25 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T15:00:25.093Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T15:00:25.093Z] : 
+[debug] [2026-04-15T16:57:56.526Z] : 
+[debug] [2026-04-15T16:57:56.528Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:57:56.529Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Residents --limit 5
+[debug] [2026-04-15T16:57:56.530Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T16:57:56.531Z] : Platform:     win32
+[debug] [2026-04-15T16:57:56.531Z] : Node Version: v16.20.2
+[debug] [2026-04-15T16:57:56.536Z] : Time:         Wed Apr 15 2026 22:27:56 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T16:57:56.536Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:57:56.537Z] : 
+[debug] [2026-04-15T16:58:27.836Z] : 
+[debug] [2026-04-15T16:58:27.837Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:58:27.838Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Residents --limit 10
+[debug] [2026-04-15T16:58:27.839Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T16:58:27.839Z] : Platform:     win32
+[debug] [2026-04-15T16:58:27.840Z] : Node Version: v16.20.2
+[debug] [2026-04-15T16:58:27.843Z] : Time:         Wed Apr 15 2026 22:28:27 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T16:58:27.844Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:58:27.844Z] : 
+[debug] [2026-04-15T16:59:04.559Z] : 
+[debug] [2026-04-15T16:59:04.562Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:59:04.562Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Residents --limit 1
+[debug] [2026-04-15T16:59:04.563Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T16:59:04.564Z] : Platform:     win32
+[debug] [2026-04-15T16:59:04.565Z] : Node Version: v16.20.2
+[debug] [2026-04-15T16:59:04.568Z] : Time:         Wed Apr 15 2026 22:29:04 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T16:59:04.568Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:59:04.569Z] : 
+[debug] [2026-04-15T16:59:57.407Z] : 
+[debug] [2026-04-15T16:59:57.408Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:59:57.409Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Communities --limit 5
+[debug] [2026-04-15T16:59:57.410Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T16:59:57.410Z] : Platform:     win32
+[debug] [2026-04-15T16:59:57.411Z] : Node Version: v16.20.2
+[debug] [2026-04-15T16:59:57.415Z] : Time:         Wed Apr 15 2026 22:29:57 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T16:59:57.415Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T16:59:57.416Z] : 
+[debug] [2026-04-15T17:03:12.164Z] : 
+[debug] [2026-04-15T17:03:12.166Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T17:03:12.166Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Residents --limit 10
+[debug] [2026-04-15T17:03:12.167Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T17:03:12.168Z] : Platform:     win32
+[debug] [2026-04-15T17:03:12.169Z] : Node Version: v16.20.2
+[debug] [2026-04-15T17:03:12.172Z] : Time:         Wed Apr 15 2026 22:33:12 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T17:03:12.173Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T17:03:12.173Z] : 
+[debug] [2026-04-15T17:05:56.152Z] : 
+[debug] [2026-04-15T17:05:56.154Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T17:05:56.154Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Residents --limit 1
+[debug] [2026-04-15T17:05:56.155Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T17:05:56.156Z] : Platform:     win32
+[debug] [2026-04-15T17:05:56.157Z] : Node Version: v16.20.2
+[debug] [2026-04-15T17:05:56.162Z] : Time:         Wed Apr 15 2026 22:35:56 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T17:05:56.163Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T17:05:56.163Z] : 
+[debug] [2026-04-15T17:10:32.726Z] : 
+[debug] [2026-04-15T17:10:32.729Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T17:10:32.730Z] : Command:      C:\Program Files\nodejs\node.exe C:\Users\Prawin\AppData\Roaming\npm\node_modules\zcatalyst-cli\lib\bin\catalyst.js db:read --table Communities --limit 5
+[debug] [2026-04-15T17:10:32.731Z] : CLI Version:  1.25.0
+[debug] [2026-04-15T17:10:32.732Z] : Platform:     win32
+[debug] [2026-04-15T17:10:32.733Z] : Node Version: v16.20.2
+[debug] [2026-04-15T17:10:32.738Z] : Time:         Wed Apr 15 2026 22:40:32 GMT+0530 (India Standard Time)
+[debug] [2026-04-15T17:10:32.739Z] : ----------------------------------------------------------------------
+[debug] [2026-04-15T17:10:32.739Z] : 

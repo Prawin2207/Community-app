@@ -1,0 +1,17 @@
+{
+  "project_details": {
+    "project_id": "27219000000019001",
+    "project_name": "CommunityHubPro",
+    "environment": "Development"
+  },
+  "client": {
+    "source": "client"
+  },
+  "functions": {
+    "targets": [
+      "communityAPI"
+    ],
+    "ignore": [],
+    "source": "functions"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "defaults": {
+    "project": 1,
+    "env": 1
+  },
+  "actives": {
+    "project": 2,
+    "env": 1
+  },
+  "projects": [
+    {
+      "idx": 1,
+      "id": "27219000000012001",
+      "name": "Project-Rainfall",
+      "domain": {
+        "id": "50039388523",
+        "name": "project-rainfall-60061477709.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60061477709",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    },
+    {
+      "idx": 2,
+      "id": "27219000000019001",
+      "name": "PrawinResidency",
+      "domain": {
+        "id": "50039551825",
+        "name": "prawinresidency-60061477709.development"
+      },
+      "timezone": "Asia/Kolkata",
+      "env": [
+        {
+          "idx": 1,
+          "id": "60061477709",
+          "name": "Development",
+          "type": 3
+        }
+      ]
+    }
+  ]
+}

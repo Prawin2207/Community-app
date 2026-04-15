@@ -1,0 +1,24 @@
+{
+  "success": [
+    "Residents",
+    "Owners",
+    "AppSettings",
+    "Complaints",
+    "Visitors",
+    "Invoices",
+    "Notices",
+    "Alerts",
+    "Proposals",
+    "Facilities",
+    "Staff",
+    "Tasks",
+    "Deliveries"
+  ],
+  "failed": [
+    {
+      "table": "Feed",
+      "error": "Failed to post to feed",
+      "status": 500
+    }
+  ]
+}
